@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4fb5f7776a.js" crossorigin="anonymous"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #f6f5f3; /* Vanilla Grey */
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .grid-header {
+            background: #f6f5f3; /* Vanilla Grey */
+            padding: 20px;
+            text-align: center;
+        }
+        .grid-main {
+            flex: 1;
+            background: #ffffff;
+            padding: 20px;
+            box-sizing: border-box; /* Ensures padding is included in the height */
+            min-height: 600px;
+        }
+        .grid-footer {
+            background: #7dce94; /* Simpler Lime Green */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+        }
+        header {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 0.5em 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f6f5f3; /* Vanilla Grey */
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+        .logo img {
+            width: 155px; /* Adjust the width as needed */
+            height: auto;
+        }
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+        nav a {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 2px 15px;
+            font-size: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #7dce94; /* Simpler Lime Green */
+            color: #f9f8fd; /* White-ish */
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            background-color: #f9f8fd; /* White-ish */
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            padding: 5px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #7dce94; /* Simpler Lime Green */
+            color: #f9f8fd; /* White-ish */
+        }
+        .content {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 40px;
+        }
+        section {
+            margin-bottom: 2em;
+        }
+        h2 {
+            border-bottom: 2px solid #7dce94; /* Simpler Lime Green */
+            padding-bottom: 0.5em;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+        /* Additional styles for the new content */
+        .about-section {
+            text-align: center;
+            padding: 20px;
+        }
+        .about-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .words-section {
+            background: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .words-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 1em;
+            word-wrap: break-word; /* Forces long words to wrap to the next line */
+        }
+        /* CSS Flexbox Layout */
+        .intro-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            min-height: 100vh; /* Ensures the section takes at least the full viewport height */
+            text-align: center; /* Center the text */
+        }
+        .intro-text {
+            flex: 1;
+            max-width: 600px; /* Optional: Adjust to limit the text width */
+        }
+        .intro-image {
+            flex: 0 0 auto;
+            max-width: 300px; /* Adjust the size as needed */
+            padding: 10px; /* Add padding to create space for the dashed border */
+            border: 4px dashed #7dce94; /* Add a dashed border around the image */
+            border-radius: 50%; /* Ensure the border is rounded */
+        }
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+        /* Add dashed border to the video */
+        .video-frame {
+            border: 4px dashed #7dce94; /* Simpler Lime Green */
+            padding: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<audio id="backgroundAudio" controls autoplay style="display: none;">
+    <source src="audios/lofibg.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+    <div class="container">
+        <header class="grid-header">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo3.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <a href="aboutme.html">&#11088 About Me</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">&#11088 Family</a>
+                    <div class="dropdown-content">
+                        <a href="dad.html">Father</a>
+                        <a href="mom.html">Mother</a>
+                        <a href="bro1.html">1st Brother</a>
+                        <a href="bro2.html">2nd Brother</a>
+                        <a href="sis.html">Sister</a>
+                    </div>
+                </div>
+                <a href="education.html">&#11088 Education</a>
+                <a href="favourite.html">&#11088; Favorite</a>
+                <a href="friend.html">&#11088; Friend</a>
+                <a href="gallery.html">&#11088 Gallery</a>                  
+            </nav>
+        </header>
+        <main class="grid-main">
+            <section class="intro-section">
+                <div class="intro-text">
+                    <p class="subtitle">HELLO</p>
+                    <h1 class="title">
+                        &#11088; I'm Farah &#11088;
+                    </h1>
+                    <p class="description">
+                        Welcome to my personal website, a digital scrapbook where I invite you to explore my life's journey.
+                        Here, you will discover intriguing facts about who I am, delve into the details of my educational background,
+                        get to know my wonderful family, and browse through a curated picture gallery filled with cherished memories and moments.
+                    </p>
+                    <div class="action__btns">
+                    <a href="aboutme.html">
+                    <img src="images/button.png" alt="HTML tutorial" style="width:102px;height:35px;">
+                    </a>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    <img src="images/profile.jpg" alt="Avatar">
+                </div>
+            </section>
+
+        </main>
+        <footer class="grid-footer">
+            <p>&#128522 Follow Me &#128522</p>
+            <p><a href="https://x.com/w_w_o3o_?t=VC7ogPPgYlTFdny6xGhUpA&s=08" target="_blank"><i class="fa-brands fa-x-twitter fa-xl" style="color: #f6f5f3;"></i></a> X (Twitter) </p>
+            <p><a href="https://www.instagram.com/invites/contact/?igsh=68cx2s5jbygj&utm_content=q84tgo" target="_blank"><i class="fa-brands fa-instagram fa-xl" style="color: #f6f5f3;"></i></a> Instagram</p>
+            <p>&copy; 2024 My Personal Website. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        // Ensure audio playback continues even when video is played
+        document.addEventListener('DOMContentLoaded', function() {
+            var backgroundAudio = document.getElementById('backgroundAudio');
+            var video = document.querySelector('video');
+
+            video.addEventListener('play', function() {
+                backgroundAudio.pause();
+            });
+
+            video.addEventListener('pause', function() {
+                backgroundAudio.play();
+            });
+        });
+    </script>
+</body>
+</html>
