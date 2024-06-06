@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4fb5f7776a.js" crossorigin="anonymous"></script>
+    <style>
+        /* Your existing CSS styles */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #f6f5f3; /* Vanilla Grey */
+            color: #3d3d3f; /* Scuffed Dark Grey */
+        }
+        header {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 0.5em 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f6f5f3; /* Vanilla Grey */
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+        .logo img {
+            width: 150px; /* Adjust the width as needed */
+            height: auto;
+        }
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+        nav a {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 2px 15px;
+            font-size: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #7dce94; /* Simpler Lime Green */
+            color: #f9f8fd; /* White-ish */
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            background-color: #f9f8fd; /* White-ish */
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            padding: 5px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #3d3d3f; /* Scuffed Dark Grey */
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #7dce94; /* Simpler Lime Green */
+            color: #f9f8fd; /* White-ish */
+        }
+        .content {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 40px;
+        }
+        section {
+            margin-bottom: 2em;
+        }
+        h2 {
+            border-bottom: 2px solid #7dce94; /* Simpler Lime Green */
+            padding-bottom: 0.5em;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+        /* Additional styles for the new content */
+        .about-section {
+            text-align: center;
+            padding: 20px;
+        }
+        .about-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .words-section {
+            background: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .words-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 1em;
+            word-wrap: break-word; /* Forces long words to wrap to the next line */
+        }
+        /* CSS Grid Layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .grid-header {
+            grid-area: header;
+            background: #f6f5f3; /* Vanilla Grey */
+            padding: 20px;
+            text-align: center;
+        }
+        .grid-main {
+            flex: 1;
+            grid-area: main;
+            background: #ffffff;
+            padding: 20px;
+        }
+        .grid-footer {
+            grid-area: footer;
+            background: #7dce94; /* Simpler Lime Green */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                display: grid;
+                grid-template-areas: 
+                    "header header"
+                    "main main"
+                    "footer footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr auto;
+            }
+       * {box-sizing:border-box
+            }
+
+      /* Slideshow container */
+           .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: 20px auto 40px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+/* Rounded corners and dashed border for slideshow images */
+        .mySlides img {
+            border: 4px dashed #7dce94; /* Simpler Lime Green */
+            border-radius: 10px; /* Adjust the radius as needed */
+            display: block;
+            width: 65%; /* Adjust the width to match the desired size */
+            height: auto; /* Maintain aspect ratio */
+            margin: auto; /* Center the images horizontally */
+}
+/* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: #f6f5f3;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            user-select: none;
+            transform: translateY(-50%);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* Position the "prev button" to the left */
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color:  #7dce94;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color:  #7dce94;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #fff220;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.0s;
+}
+
+@keyframes fade {
+  from {opacity: .2}
+  to {opacity: 1}
+}
+        }
+        /* Add dashed border to the video */
+        .video-frame {
+            border: 4px dashed #7dce94; /* Simpler Lime Green */
+            padding: 5px;
+            display: inline-block;
+        }
+        mark {
+            background-color:#7dce94;/* Change this to the desired highlight color */
+            color:#f9f8fd;
+            border-radius: 5px;
+            padding: 2px; 
+        }
+        .link-icon {
+            margin-left: 10px; 
+        }
+
+    </style>
+</head>
+<body>
+<audio id="backgroundAudio" controls autoplay style="display: none;">
+    <source src="audios/lofibg.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+    <div class="container">
+        <header class="grid-header">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo3.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <a href="aboutme.html">&#11088 About Me</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">&#11088 Family</a>
+                    <div class="dropdown-content">
+                        <a href="dad.html">Father</a>
+                        <a href="mom.html">Mother</a>
+                        <a href="bro1.html">1st Brother</a>
+                        <a href="bro2.html">2nd Brother</a>
+                        <a href="sis.html">Sister</a>
+                    </div>
+                </div>
+                <a href="education.html">&#11088 Education</a>
+                <a href="favourite.html">&#11088; Favorite</a>
+                <a href="friend.html">&#11088; Friend</a>
+                <a href="gallery.html">&#11088 Gallery</a>                
+            </nav>
+        </header>
+        <main class="grid-main">
+            <div class="about-section">
+                <h2 style="color:#7dce94" >&#11088 About Me &#11088</h2>
+<table width="80%" align="center" >
+  <tr>
+    <td colspan="4" style="background-image: url('images/side.png'); background-size: cover; background-position: center;">&#127804;</td>
+  </tr>  
+  <tr>
+    <td style="background-image: url('images/side.png'); background-size: cover; background-position: center;" rowspan="9">&#127804;</td>
+    <td rowspan="9">
+      <!-- Slideshow container -->
+      <div class="slideshow-container">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 6</div>
+          <img src="images/farah1.jpg" style="width:65%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 6</div>
+          <img src="images/farah2.jpg" style="width:65%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 6</div>
+          <img src="images/farah3.jpg" style="width:65%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 6</div>
+          <img src="images/farah4.jpg" style="width:65%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 6</div>
+          <img src="images/farah5.jpg" style="width:65%">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 6</div>
+           <video id="myVideo" class="video-frame" width="280" height="420" controls>
+           <source src="videos/me.mp4" type="video/mp4">
+           Your browser does not support the video tag.
+           </video>
+        </div>
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#11088;</a>
+        <a class="next" onclick="plusSlides(1)">&#11088;</a>
+      </div>
+      <br>
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+      </div>
+    </td>
+    <td></td>
+    <td style="background-image: url('images/side.png'); background-size: cover; background-position: center;" rowspan="9">&#127804;</td>
+  </tr>
+  <tr>
+    <td><mark>Name</mark>: &#10024;Farah Qurratu'Aini Binti Abd Razak&#10024;</td>
+  </tr>
+  <tr>
+    <td><mark>Age</mark>: &#10024;21 Years Old &#10024;</td>
+  </tr>
+  <tr>
+    <td><mark>Date Of Birth</mark>: &#10024;22nd August 2003 &#10024;</td>
+  </tr>
+  <tr>
+    <td><mark>Place Of Birth</mark>: &#10024;Hospital Bersalin Kuala Lumpur&#10024;</td>
+  </tr>
+  <tr>
+    <td><mark>Where I Live</mark>: &#10024;Taman Desa Baiduri, Cheras, Kuala Lumpur&#10024;</td>
+  </tr>
+  <tr>
+    <td><mark>Hobby</mark>: &#10024; Embroidery &#10024;</td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="4" style="background-image: url('images/side.png'); background-size: cover; background-position: center;">&#127804;</td>
+  </tr>
+</table>
+            </div>
+        </main>
+        <footer class="grid-footer">
+            <p>&#128522 Follow Me &#128522</p>
+            <p><a href="https://x.com/w_w_o3o_?t=VC7ogPPgYlTFdny6xGhUpA&s=08" target="_blank"><i class="fa-brands fa-x-twitter fa-xl" style="color: #f6f5f3;"></i></a> X (Twitter) </p>
+            <p><a href="https://www.instagram.com/invites/contact/?igsh=68cx2s5jbygj&utm_content=q84tgo" target="_blank"><i class="fa-brands fa-instagram fa-xl" style="color: #f6f5f3;"></i></a> Instagram</p>
+            <p>&copy; 2024 My Personal Website. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        // Ensure audio playback continues even when video is played
+        document.addEventListener('DOMContentLoaded', function() {
+            var backgroundAudio = document.getElementById('backgroundAudio');
+            var video = document.querySelector('video');
+
+            video.addEventListener('play', function() {
+                backgroundAudio.pause();
+            });
+
+            video.addEventListener('pause', function() {
+                backgroundAudio.play();
+            });
+        });
+
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>
